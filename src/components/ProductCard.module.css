@@ -1,0 +1,88 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.image {
+  width: 350px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Show cart button on parent hover */
+.card:hover .cartButton {
+  opacity: 1;
+  bottom: -0.75rem; /* 12px */
+}
+
+.cartButton {
+  position: absolute;
+  right: 1.25rem; /* 20px */
+  bottom: -1.25rem; /* 20px */
+  background-color: var(--secondary-color); /* green-500 */
+  color: white;
+  padding: 0.75rem; /* 12px */
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.cartButton:focus {
+  outline: 2px solid #34d399; /* focus:ring-2 focus:ring-green-400 */
+}
+
+.outOfStockOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+}
+
+.outOfStockOverlay span {
+  color: #6b7280; /* gray-500 */
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.productName {
+  font-size: 1.125rem; /* text-lg */
+  color: #374151; /* gray-700 */
+}
+
+.productPrice {
+  margin-top: auto; /* Pushes price to the bottom */
+  padding-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #111827; /* gray-900 */
+}

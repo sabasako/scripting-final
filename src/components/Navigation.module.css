@@ -1,0 +1,174 @@
+.navWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+}
+
+.navLeft {
+  flex: 1;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--secondary-color);
+}
+
+.navLink.active {
+  color: var(--secondary-color);
+}
+
+.navLink.active::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-color);
+}
+
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  color: var(--secondary-color);
+}
+
+.controlsRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.controlButton:hover {
+  color: var(--secondary-color);
+} 
+
+.cartButton {
+  position: relative;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  height: 1rem;
+  width: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currencySelector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.currencySelector:hover .currencyMenu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.currencySelector .currencyArrow {
+  rotate: 90deg;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: transform 150ms ease;
+}
+
+.currencyArrow {
+  display: inline-flex; /* Use flex to better center the SVG icon */
+  align-items: center;
+  justify-content: center;
+  transition: transform 150ms ease;
+  transform-origin: center;
+}
+
+.currencySelector:hover .currencyArrow {
+  transform: rotate(-180deg);
+}
+
+.currencyMenu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 70%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 150ms, opacity 150ms ease-in-out;
+  transition-delay: 0s;
+}
+
+.currencyMenu::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: transparent;
+}
+
+.currencyMenu li button {
+  font-size: 18px;
+  transition: all 150ms ease;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.currencyMenu li button.active {
+  background-color: var(--background-secondary-color);
+}
+
+.currencyMenu li button:hover {
+  background-color: var(--background-secondary-color);
+}
