@@ -8,6 +8,9 @@
   --secondary-color: #5ece7b;
   --background-color: #fff;
   --background-secondary-color: #f2f2f2;
+  --error-color: #d9534f;
+  --border-color: #e5e5e5;
+  --text-light: #616161;
 }
 
 *,
@@ -16,6 +19,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

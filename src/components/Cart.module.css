@@ -30,7 +30,17 @@
   border: 2px solid white;
 }
 
-.popover {
+.popover.visible {
+  min-width: 325px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.popover.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
@@ -40,9 +50,6 @@
   border-radius: 8px;
   padding: 24px;
   z-index: 10;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(10px);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -50,6 +57,7 @@
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .popover::after {
@@ -62,6 +70,14 @@
   background: transparent;
 }
 
+.header {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-transform: uppercase;
+  margin: 80px 0 55px;
+}
+
 .popoverHeader {
   font-size: 1.1rem;
   font-weight: bold;
@@ -71,18 +87,31 @@
 .itemCount {
   font-weight: normal;
 }
-.itemList {
-  max-height: 400px;
-  overflow-y: auto;
+
+.itemList.hidden {
   margin-right: -16px;
   padding-right: 16px;
+  max-height: 400px;
+  overflow-y: auto;
 }
+
 .cartItem {
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
   color: var(--primary-color);
 }
+
+.cartItem.visible {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 24px;
+}
+
+.cartItem.visible:last-child {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 24px;
+}
+
 .itemDetails {
   display: flex;
   flex-direction: column;
@@ -167,7 +196,13 @@
   display: flex;
   gap: 12px;
 }
-.viewBagButton {
+.viewBagButton:link,
+.viewBagButton:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
   flex: 1;
   padding: 14px;
   background-color: transparent;
@@ -177,9 +212,31 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.checkoutButton {
+.checkoutButton:link,
+.checkoutButton:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
   flex: 1;
   padding: 14px;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.continueButton:link,
+.continueButton:visited {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  flex: 1;
+  margin-top: 16px;
+  padding: 13px 103px;
   background-color: var(--secondary-color);
   border: 2px solid var(--secondary-color);
   color: white;

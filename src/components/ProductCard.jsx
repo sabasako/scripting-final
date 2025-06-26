@@ -2,24 +2,27 @@ import { ShoppingCart } from "lucide-react";
 import styles from "./ProductCard.module.css";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useCart } from "../contexts/CartContext";
+import { Link } from "react-router";
 
 const ProductCard = ({ product }) => {
   const { currencySymbol, exchangeToCurrentCurrency } = useCurrency();
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
 
   const { name, price, imageUrl, inStock } = product;
 
   const convertedPrice = exchangeToCurrentCurrency(price);
 
   function handleAddToCart() {
-    const alreadyInCart = addToCart(product);
-    if (alreadyInCart) {
+    addToCart(product);
+    if (isInCart) {
       alert(`${name} is already in your cart.`);
     }
   }
 
+  const isInCart = cartItems.some((item) => item.id === product.id);
+
   return (
-    <div className={styles.card}>
+    <Link to={`/details/${product.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img
           src={imageUrl}
@@ -39,7 +42,16 @@ const ProductCard = ({ product }) => {
         )}
 
         {inStock && (
-          <button onClick={handleAddToCart} className={styles.cartButton}>
+          <button
+            disabled={isInCart}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              handleAddToCart();
+            }}
+            className={`${styles.cartButton} ${isInCart ? styles.inCart : ""}`}
+          >
             <ShoppingCart size={24} />
           </button>
         )}
@@ -52,7 +64,7 @@ const ProductCard = ({ product }) => {
           {convertedPrice}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

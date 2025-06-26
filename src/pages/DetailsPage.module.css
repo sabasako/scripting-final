@@ -1,0 +1,81 @@
+.detailsPage {
+  margin-top: 80px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.imagesContainer {
+  display: flex;
+  gap: 40px;
+}
+
+.smallImagesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.productSmallImage {
+  width: 80px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.productImage {
+  width: 610px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.itemOptions {
+  margin: 43px 0 122px;
+}
+.optionLabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.sizeOptions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  margin-right: 50px;
+}
+.sizeButton {
+  width: 63px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.sizeButtonSelected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.addToCartButton {
+  text-transform: uppercase;
+  margin: 20px 0 40px;
+  padding: 13px 103px;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addToCartButton.isInCart {
+  filter: grayscale(100%);
+  cursor: default;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--primary-color);
+}

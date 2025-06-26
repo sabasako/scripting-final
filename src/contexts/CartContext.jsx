@@ -5,14 +5,14 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, size) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
-    if (existingItem) {
-      return true;
-    }
+    if (existingItem) return;
 
-    setCartItems((items) => [...items, { ...product, quantity: 1 }]);
-    return false;
+    setCartItems((items) => [
+      ...items,
+      { ...product, quantity: 1, size: size || product.sizes[0] },
+    ]);
   };
 
   const handleQuantityChange = (id, delta) => {
