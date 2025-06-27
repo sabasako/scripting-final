@@ -6,7 +6,10 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "./pages/Layout.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import DetailsPage from "./pages/DetailsPage.jsx";
-import CheckoutPage from "./pages/Checkout.jsx";
+import CheckoutDetails from "./pages/CheckoutDetails.jsx";
+import CheckoutLayout from "./pages/CheckoutLayout.jsx";
+import CheckoutShipping from "./pages/CheckoutShipping.jsx";
+import CheckoutPayment from "./pages/CheckoutPayment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,21 @@ const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        Component: CheckoutPage,
+        Component: CheckoutLayout,
+        children: [
+          {
+            path: "details",
+            Component: CheckoutDetails,
+          },
+          {
+            path: "shipping",
+            Component: CheckoutShipping,
+          },
+          {
+            path: "payment",
+            Component: CheckoutPayment,
+          },
+        ],
       },
     ],
   },

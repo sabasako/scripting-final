@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import products from "../products.json";
+import products from "../data/products.json";
 import styles from "./DetailsPage.module.css";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";

@@ -107,9 +107,12 @@ export default function CartDetails({ shouldBeVisible = true }) {
               {exchangeToCurrentCurrency(totalPrice)}
             </strong>
           </div>
-          <Link to="/checkout" className={styles.continueButton}>
-            Continue
-          </Link>
+
+          {totalItems > 0 && (
+            <Link to="/checkout/details" className={styles.continueButton}>
+              Continue
+            </Link>
+          )}
         </div>
       ) : (
         <div className={styles.popoverFooter}>
@@ -125,9 +128,11 @@ export default function CartDetails({ shouldBeVisible = true }) {
             <Link to="/cart" className={styles.viewBagButton}>
               VIEW BAG
             </Link>
-            <Link to="/checkout" className={styles.checkoutButton}>
-              CHECK OUT
-            </Link>
+            {totalItems > 0 && (
+              <Link to="/checkout/details" className={styles.checkoutButton}>
+                CHECK OUT
+              </Link>
+            )}
           </div>
         </div>
       )}

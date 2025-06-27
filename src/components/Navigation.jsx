@@ -5,6 +5,7 @@ import { useCurrency } from "../contexts/CurrencyContext";
 import Logo from "./Logo.jsx";
 import { useCategory } from "../contexts/CategoryContext.jsx";
 import Cart from "./Cart.jsx";
+import { Link } from "react-router";
 
 const navItems = ["WOMEN", "MEN", "KIDS"];
 
@@ -33,9 +34,9 @@ export default function Navigation() {
           </ul>
         </nav>
 
-        <div className={styles.logo}>
+        <Link to={"/"} className={styles.logo}>
           <Logo />
-        </div>
+        </Link>
 
         <div className={styles.controlsRight}>
           <div className={styles.currencySelector}>
