@@ -1,27 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import FormInput from "../components/form/FormInput";
 import FormSelect from "../components/form/FormSelect";
 import "../components/form/forms.css";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import regions from "../data/regions.json";
 import Breadcrumbs from "../components/form/Breadcrumbs";
 import { useCheckout } from "../contexts/CheckoutContext";
 import FormActions from "../components/form/FormActions";
-
-const shippingSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
-  address: z.string().min(1, { message: "Address is required" }),
-  shippingNote: z.string().optional(),
-  city: z.string().min(1, { message: "City is required" }),
-  postalCode: z.string().min(1, { message: "Postal code is required" }),
-  province: z.string().min(1, { message: "Please select a province" }),
-  country: z.string().min(1, { message: "Please select a country" }),
-  saveInfo: z.boolean().optional(),
-});
+import { detailsSchema } from "../schemas/detailsSchema";
 
 export default function CheckoutDetails() {
   const navigate = useNavigate();
@@ -32,7 +19,7 @@ export default function CheckoutDetails() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(shippingSchema),
+    resolver: zodResolver(detailsSchema),
     mode: "onBlur",
     defaultValues: {
       email: details.email || "",
@@ -71,8 +58,8 @@ export default function CheckoutDetails() {
       <Breadcrumbs />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="checkout-form"
         noValidate
+        className="checkout-form"
       >
         <h2 className="section-header">Contact</h2>
         <FormInput

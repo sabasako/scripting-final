@@ -10,6 +10,7 @@ import CheckoutDetails from "./pages/CheckoutDetails.jsx";
 import CheckoutLayout from "./pages/CheckoutLayout.jsx";
 import CheckoutShipping from "./pages/CheckoutShipping.jsx";
 import CheckoutPayment from "./pages/CheckoutPayment.jsx";
+import CheckoutSuccess from "./pages/CheckoutSuccess.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: "payment",
             Component: CheckoutPayment,
+          },
+          {
+            path: "success",
+            Component: CheckoutSuccess,
           },
         ],
       },

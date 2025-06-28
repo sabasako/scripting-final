@@ -1,9 +1,28 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation, useSearchParams } from "react-router";
 import "../components/form/forms.css";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useCart } from "../contexts/CartContext";
+import { useCheckout } from "../contexts/CheckoutContext";
 
 export default function CheckoutLayout() {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
+  const paymentStatus = searchParams.get("paymentStatus");
+
+  const { details } = useCheckout();
+
+  const shippingLabel =
+    location.pathname === "/checkout/details"
+      ? "Calculated at the next step"
+      : details.shippingMethod === "standard"
+      ? "Free Shipping"
+      : "Express Shipping";
+
+  const totalLabel = paymentStatus === "success" ? "Paid" : "Total";
+
+  const shippingPrice = details.shippingMethod === "standard" ? 0 : 4.99;
+
   const { currencySymbol, exchangeToCurrentCurrency } = useCurrency();
   const { cartItems, totalPrice } = useCart();
 
@@ -48,15 +67,22 @@ export default function CheckoutLayout() {
               {exchangeToCurrentCurrency(totalPrice)}
             </span>
           </div>
-          <div className="price-row">
+          <div className="price-row last">
             <span>Shipping</span>
-            <span>Calculated at the next step</span>
+            <span>
+              {shippingLabel} {currencySymbol}
+              {exchangeToCurrentCurrency(shippingPrice)}
+            </span>
           </div>
-          <div className="price-row total">
-            <span>Total</span>
+          <div
+            className={`price-row total ${
+              totalLabel === "Paid" ? "success" : ""
+            }`}
+          >
+            <span>{totalLabel}</span>
             <span>
               {currencySymbol}
-              {exchangeToCurrentCurrency(totalPrice)}
+              {exchangeToCurrentCurrency(totalPrice + shippingPrice)}
             </span>
           </div>
         </div>

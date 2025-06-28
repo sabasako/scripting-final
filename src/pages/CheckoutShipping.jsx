@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useNavigate } from "react-router";
 import Breadcrumbs from "../components/form/Breadcrumbs";
 import FormActions from "../components/form/FormActions";
 import ShippingTable from "../components/form/ShippingTable";
@@ -8,8 +8,7 @@ import { useCurrency } from "../contexts/CurrencyContext";
 export default function CheckoutShipping() {
   const { details, setDetails } = useCheckout();
   const { currencySymbol, exchangeToCurrentCurrency } = useCurrency();
-
-  const [shippingMethod, setShippingMethod] = useState("standard");
+  const navigate = useNavigate();
 
   const data = [
     {
@@ -25,9 +24,13 @@ export default function CheckoutShipping() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    navigate("/checkout/payment");
+  }
+
+  function changeMethod(method) {
     setDetails((prevDetails) => ({
       ...prevDetails,
-      shippingMethod,
+      shippingMethod: method,
     }));
   }
 
@@ -39,13 +42,13 @@ export default function CheckoutShipping() {
       <h2 className="shipping-heading">Shipping method</h2>
       <div className="shipping-option-container">
         <button
-          onClick={() => setShippingMethod("standard")}
+          onClick={() => changeMethod("standard")}
           className="shipping-option"
         >
           <input
             type="checkbox"
-            onChange={() => setShippingMethod("standard")}
-            checked={shippingMethod === "standard"}
+            onChange={() => changeMethod("standard")}
+            checked={details.shippingMethod === "standard"}
           />
           <div>
             <p className="shipping-name">Standard Shipping</p>
@@ -54,13 +57,13 @@ export default function CheckoutShipping() {
         </button>
 
         <button
-          onClick={() => setShippingMethod("express")}
+          onClick={() => changeMethod("express")}
           className="shipping-option"
         >
           <input
             type="checkbox"
-            onChange={() => setShippingMethod("express")}
-            checked={shippingMethod === "express"}
+            onChange={() => changeMethod("express")}
+            checked={details.shippingMethod === "express"}
           />
           <div>
             <p className="shipping-name">Express Shipping</p>

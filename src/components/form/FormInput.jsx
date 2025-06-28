@@ -7,6 +7,7 @@ export default function FormInput({
   error,
   placeholder,
   type = "text",
+  ...props
 }) {
   return (
     <div className="form-group">
@@ -17,6 +18,7 @@ export default function FormInput({
         id={id}
         type={type}
         placeholder={label}
+        {...props}
         {...register(id)}
         className={`form-input ${error ? "input-error" : ""}`}
       />

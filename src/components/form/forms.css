@@ -189,16 +189,31 @@
   margin-bottom: 10px;
   font-size: 14px;
 }
+
+.price-row.last {
+  margin-bottom: 30px;
+}
+
 .price-row.total {
   font-size: 18px;
   font-weight: 600;
-  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
 }
+
+.price-row.success > span {
+  color: var(--secondary-color);
+}
+
 .price-row span:first-child {
   color: var(--text-light);
 }
 .price-row.total span:first-child {
   color: var(--primary-color);
+}
+
+.price-row.total.success span:first-child {
+  color: var(--secondary-color);
 }
 .sr-only {
   position: absolute;
@@ -330,4 +345,110 @@ select {
   font-weight: 600;
   font-size: 14px;
   color: #272727;
+}
+
+/**************/
+/* * PAYMENT */
+/**************/
+
+.payment-form {
+  margin-top: 23px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+}
+
+.payment-header {
+  padding: 14px 21px;
+  background: linear-gradient(to bottom, #56b28033 20%, #56b28033 40%);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 23px;
+  color: var(--secondary-color);
+}
+
+.payment-input-container {
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.payment-input-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.payment-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.animate-spin {
+  color: var(--secondary-color);
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.checkout-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.success-icon {
+  color: var(--secondary-color);
+  width: 100px;
+  height: 100px;
+}
+
+.checkout-success h2 {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 16px 0 10px;
+}
+
+.checkout-success p {
+  font-size: 14px;
+  color: var(--secondary-color);
+  margin-bottom: 26px;
+}
+
+.checkout-success button {
+  padding: 12px 24px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkout-success button:hover {
+  background-color: #6cb66f;
+}
+
+.checkout-success button:active {
+  scale: 0.95;
 }

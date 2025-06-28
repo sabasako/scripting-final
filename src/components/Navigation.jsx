@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { ShoppingCart } from "lucide-react";
 import styles from "./Navigation.module.css";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Logo from "./Logo.jsx";

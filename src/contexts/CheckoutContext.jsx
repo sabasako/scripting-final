@@ -21,8 +21,6 @@ export const CheckoutProvider = ({ children }) => {
     cardCVV: "",
   });
 
-  console.log(details);
-
   return (
     <CheckoutContext.Provider value={{ details, setDetails }}>
       {children}
