@@ -92,8 +92,10 @@ export default function DetailsPage() {
 
         <button
           onClick={handleAddToCart}
-          disabled={isInCart}
-          className={`${styles.addToCartButton} ${isInCart && styles.isInCart}`}
+          disabled={isInCart || !product.inStock}
+          className={`${styles.addToCartButton} ${
+            (isInCart || !product.inStock) && styles.isInCart
+          }`}
         >
           {isInCart ? "Already in Cart" : "Add to Cart"}
         </button>

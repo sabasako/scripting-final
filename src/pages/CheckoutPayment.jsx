@@ -153,7 +153,7 @@ export default function CheckoutPayment() {
         <div className="checkout-success">
           <CircleCheck className="success-icon" />
           <h2>Payment Confirmed</h2>
-          <p>ORDER #2039</p>
+          <p>ORDER #{Math.round(Math.random() * 10000)}</p>
 
           <button onClick={handleReset}>Back to shopping</button>
         </div>
